@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Choose Role</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding-top: 50px;
+      background-color: #f5f5f5;
+    }
+    .container {
+      background-color: white;
+      display: inline-block;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    input, button {
+      padding: 10px;
+      margin: 10px;
+      width: 200px;
+    }
+    #passwordField {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Select Your Role</h1>
+    <button onclick="selectRole('admin')">Admin</button>
+    <button onclick="selectRole('player')">Player</button>
+
+    <div id="passwordField">
+      <p>Enter Admin Password:</p>
+      <input type="password" id="adminPassword" placeholder="Password"/>
+      <br>
+      <button onclick="loginAsAdmin()">Login as Admin</button>
+      <p id="error" style="color:red;"></p>
+    </div>
+  </div>
+
+  <script>
+    function selectRole(role) {
+      if (role === 'admin') {
+        document.getElementById('passwordField').style.display = 'block';
+      } else {
+        window.location.href = 'team.html'; // Change to your player page
+      }
+    }
+
+    function loginAsAdmin() {
+      const password = document.getElementById('adminPassword').value;
+      if (password === '@Upbeat1819') {
+        window.location.href = 'admin.html'; // Change to your admin page
+      } else {
+        document.getElementById('error').textContent = 'Incorrect password!';
+      }
+    }
+  </script>
+</body>
+</html>
